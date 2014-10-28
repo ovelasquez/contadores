@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Certificaciones" table="certificaciones">
+    <indexes>
+      <index name="IDX_EFC763D240942D2C" columns="dirigido_id"/>
+      <index name="IDX_EFC763D2DE734E51" columns="cliente_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="ingreso" type="float" column="ingreso" precision="10" scale="0" nullable="false"/>
+    <field name="emision" type="date" column="emision" nullable="false"/>
+    <field name="desde" type="date" column="desde" nullable="false"/>
+    <field name="hasta" type="date" column="hasta" nullable="false"/>
+    <field name="hojaSeguridad" type="string" column="hoja_seguridad" length="255" nullable="false"/>
+    <many-to-one field="cliente" target-entity="Clientes">
+      <join-columns>
+        <join-column name="cliente_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="dirigido" target-entity="Dirigidos">
+      <join-columns>
+        <join-column name="dirigido_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

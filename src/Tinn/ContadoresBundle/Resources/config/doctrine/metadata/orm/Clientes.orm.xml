@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Clientes" table="clientes">
+    <indexes>
+      <index name="IDX_50FE07D7C5AF4D0F" columns="profesion_id"/>
+    </indexes>
+    <id name="id" type="bigint" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="nacionalidad" type="string" column="nacionalidad" nullable="false"/>
+    <field name="cedula" type="string" column="cedula" length="255" nullable="false"/>
+    <field name="nombre" type="string" column="nombre" length="255" nullable="false"/>
+    <field name="apellido" type="string" column="apellido" length="255" nullable="false"/>
+    <field name="telefono" type="string" column="telefono" length="255" nullable="false"/>
+    <many-to-one field="profesion" target-entity="Profesiones">
+      <join-columns>
+        <join-column name="profesion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

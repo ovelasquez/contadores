@@ -1,0 +1,5 @@
+contadores:
+    resource: "@ContadoresBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
